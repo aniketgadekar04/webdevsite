@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Navbar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .top-bar {
+            background: #222;
+            color: white;
+            padding: 10px 15px;
+            font-size: 14px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .top-bar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .social-icons a {
+            font-size: 24px;
+            margin-left: 20px;
+            color: #4caf50;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #2d6a4f;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #ffffff;
+            padding: 10px 0;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #2d6a4f;
+            font-size: 26px;
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 16px;
+            font-weight: 600;
+            transition: 0.3s;
+            color: #333;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #2d6a4f;
+        }
+
+        .navbar-nav .nav-item i {
+            margin-right: 8px;
+            font-size: 20px;
+            color: #4caf50;
+        }
+
+        .navbar-toggler {
+            border: none;
+        }
+
+        .request-call {
+            background: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .request-call:hover {
+            background: #388e3c;
+        }
+
+        /* Secondary Work Menu */
+        .secondary-menu {
+            background-color: #f8f9fa;
+            border-top: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        .secondary-menu .nav-item {
+            margin-right: 30px;
+        }
+
+        /* Mobile View (Off-canvas) */
+        .navbar-nav .nav-item {
+            padding: 10px 0;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-nav {
+                display: none;
+                width: 100%;
+                text-align: left;
+            }
+
+            .navbar-nav.open {
+                display: block;
+            }
+
+            .navbar-nav .nav-link {
+                font-size: 14px;
+            }
+
+            .navbar-toggler-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .top-bar {
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+
+            .navbar-nav .nav-item {
+                padding: 15px 10px;
+            }
+
+            /* Side Menu */
+            .side-menu {
+                position: fixed;
+                top: 0;
+                left: -250px;
+                width: 250px;
+                height: 100%;
+                background-color: #333;
+                overflow-y: auto;
+                transition: 0.3s;
+                z-index: 1000;
+                padding-top: 60px;
+                box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+            }
+
+            .side-menu.open {
+                left: 0;
+            }
+
+            .side-menu a {
+                color: white;
+                padding: 10px 15px;
+                text-decoration: none;
+                display: block;
+                font-size: 18px;
+            }
+
+            .side-menu a:hover {
+                background-color: #4caf50;
+            }
+
+            .side-menu .close-btn {
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                font-size: 30px;
+                color: white;
+                cursor: pointer;
+            }
+
+            /* Submenu */
+            .submenu {
+                display: none;
+                padding-left: 20px;
+                background-color: #444;
+            }
+
+            .submenu.open {
+                display: block;
+            }
+
+            .submenu a {
+                color: #ccc;
+                padding: 8px 15px;
+            }
+
+            .submenu a:hover {
+                background-color: #666;
+            }
+        }
+
+        /* Show the desktop menu */
+        @media (min-width: 769px) {
+            .side-menu {
+                display: none;
+            }
+
+            .navbar-toggler {
+                display: none;
+            }
+
+            .navbar-nav {
+                display: flex !important;
+                justify-content: flex-start;
+            }
+
+            .navbar-nav .nav-item {
+                padding: 0 20px;
+            }
+
+            .btn-auth {
+            background: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s;
+            margin-left: 10px;
+        }
+
+        .btn-auth:hover {
+            background: #388e3c;
+        }
+
+            .navbar-nav .nav-link {
+                font-size: 16px;
+                font-weight: bold;
+            }
+
+            .request-call {
+                margin-left: 20px;
+            }
+
+            /* footer design */
+
+            .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 40px 0;
+        }
+        .footer a {
+            color: #dcdcdc;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: #ffffff;
+        }
+        .social-icons a {
+            font-size: 20px;
+            margin-right: 10px;
+        }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container d-flex justify-content-between">
+            <div class="contact-info">
+                <a href="tel:+919910308266"><i class="fas fa-phone"></i> +91-9910308266</a>
+                <a href="mailto:enquiry@techmagnate.com"><i class="fas fa-envelope"></i> enquiry@techmagnate.com</a>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">TECHMAGNATE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                </ul>
+                <a href="#" class="btn-auth">Sign Up</a>
+                <a href="#" class="btn-auth">Sign In</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Secondary Work Menu (SEO, Digital Marketing, etc.) -->
+    <nav class="navbar navbar-expand-lg navbar-light secondary-menu">
+        <div class="container">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link" href="#">SEO</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Digital Marketing</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">App Marketing</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Development</a></li>
+            </ul>
+           
+        </div>
+    </nav>
+
+    <!-- Side Menu for Mobile -->
+    <div class="side-menu" id="sideMenu">
+        <span class="close-btn" onclick="closeSideMenu()">&times;</span>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Blog</a>
+        <a href="#">Contact</a>
+
+        <!-- Work menu items for mobile with submenus -->
+        <a href="#" onclick="toggleSubMenu('seoSubMenu')">SEO</a>
+        <div class="submenu" id="seoSubMenu">
+            <a href="#">On-Page SEO</a>
+            <a href="#">Off-Page SEO</a>
+        </div>
+
+        <a href="#" onclick="toggleSubMenu('digitalMarketingSubMenu')">Digital Marketing</a>
+        <div class="submenu" id="digitalMarketingSubMenu">
+            <a href="#">Social Media Marketing</a>
+            <a href="#">Email Marketing</a>
+        </div>
+
+        <a href="#" onclick="toggleSubMenu('appMarketingSubMenu')">App Marketing</a>
+        <div class="submenu" id="appMarketingSubMenu">
+            <a href="#">ASO</a>
+            <a href="#">User Acquisition</a>
+        </div>
+
+        <a href="#" onclick="toggleSubMenu('developmentSubMenu')">Development</a>
+        <div class="submenu" id="developmentSubMenu">
+            <a href="#">Web Development</a>
+            <a href="#">Mobile App Development</a>
+        </div>
+    </div>
+
+    <div style="background-color: black; height: 60vh;">
+
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h5>About Us</h5>
+                    <p>We provide top-notch web development and digital marketing solutions.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Useful Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contact Us</h5>
+                    <p>Email: info@yourcompany.com</p>
+                    <p>Phone: +123 456 7890</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle side menu open/close
+        document.querySelector('.navbar-toggler').addEventListener('click', function () {
+            document.getElementById('sideMenu').classList.toggle('open');
+        });
+
+        // Close the side menu when clicking the close button
+        function closeSideMenu() {
+            document.getElementById('sideMenu').classList.remove('open');
+        }
+
+        // Toggle submenu visibility
+        function toggleSubMenu(id) {
+            var submenu = document.getElementById(id);
+            submenu.classList.toggle('open');
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
